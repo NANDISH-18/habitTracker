@@ -6,17 +6,17 @@ const app = express();
 
 
 //including mongodb configuration
-const db = require('../config/mongoose');
+const db = require('./config/mongoose');
 const cookieParser = require('cookie-parser');
 
 // Using flash library for showing user action notification
 const flash = require('connect-flash');
-const customware = require('../config/flashmiddleware');
+const customware = require('./config/flashmiddleware');
 
 // used for session cookie
 const session = require('express-session');
 const passport = require('passport');
-const passportLocal = require('../config/passport-local-strategy')
+const passportLocal = require('./config/passport-local-strategy')
 
 const MongoStore = require('connect-mongo');
 
@@ -68,7 +68,7 @@ app.use(flash());
 app.use(customware.setFlash);
 
 // using express router
-app.use('/',require('../routes/index'))
+app.use('/',require('./routes/index'))
 
 app.listen(port , (err)=> {
     if(err){
